@@ -1,6 +1,8 @@
-Rate and give feed back on the companies that you worked in the past :
+Requirements :
+
+* Rate and give feed back on the companies that you worked in the past
 * Users can go to the company page and click on rate this company button
-* After a user changes job, we can email him to rate his previous company to help other professionals (anonymously ofcourse)
+* After a user changes job, we can email him to rate his previous company to help other professionals (anonymously of course)
 
 
 * Underline the fact that it is going to be anonymous
@@ -16,10 +18,9 @@ Design :
 * Next screen shows general information of the company on top, with the survey questions below
 * After answering the question :
 ** if you are the first person to rate, display message "You are the first one to rate this company! Thank you"
-
 ** Else print "Thank you", the aggregate stats are below :
-show all the stats for that company
-Along with all anonymous comments
+* show all the stats for that company
+* Along with all anonymous comments
 
 Business :
 
