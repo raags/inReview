@@ -1,0 +1,28 @@
+Rate and give feed back on the companies that you worked in the past :
+* Users can go to the company page and click on rate this company button
+* After a user changes job, we can email him to rate his previous company to help other professionals (anonymously ofcourse)
+
+
+* Underline the fact that it is going to be anonymous
+* has to be few questions and a comment box
+* Questions that require a rating bar would be better
+
+Design :
+
+* One textbox to search or enter the company name. Somewhere in the page show recently rated/searched companies, so that users can discover directly.
+** If many matches, the results are listed on the bottom
+** Use css effects, make it ajaxy
+
+* Next screen shows general information of the company on top, with the survey questions below
+* After answering the question :
+** if you are the first person to rate, display message "You are the first one to rate this company! Thank you"
+
+** Else print "Thank you", the aggregate stats are below :
+show all the stats for that company
+Along with all anonymous comments
+
+Business :
+
+A feature for the companies managing their pages to get anonymous, aggregate feedback directly from professionals
+
+

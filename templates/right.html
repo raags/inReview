@@ -1,0 +1,31 @@
+<script type="text/javascript">
+
+$(document).ready(function(){	 
+$("#search").typeahead({
+	source: ['LinkedIn', 'Red Hat', 'Yahoo!', 'Google']
+ });
+});
+
+</script>
+
+	<p>Get insights on <em>70,000+</em> companies through anonymous reviews submitted by LinkedIn members like you.</p>
+	
+	<p><strong>Sign-in</strong> to get started!</p>
+	<ul id="sign-in-ul">
+	<li>Sign-in so you can review your past and current positions</li>
+	<li>All reviews are 100% anonymous - we only check to see whether a review was submitted or not</li>
+	<li>Search for other companies using the search bar below</li>
+	</ul>
+	
+	<div class="alert alert-info">
+	    <a class="close" data-dismiss="alert" href="#">×</a>
+	    <strong>Note:</strong>
+		Search only works for LinkedIn, Yahoo!, Google and Red Hat for now.
+	</div>
+	
+	<form class="form-search">
+	<input type="text" id="search" data-provide="typeahead" data-items="8" class="input-large" placeholder="Company name">
+	<a id="submit" class="btn btn-primary">Search</a>
+	</form>
+	
+

@@ -1,0 +1,161 @@
+<script type="text/javascript">
+//$(".rating").rating({showCancel: false, showTarget: true, });
+//});
+
+IN.API.Raw("/companies/" + {{ company.company_id  }} + ":(id,logo-url,website-url,founded-year,locations:(is-headquarters,address:(state,city)))").result(function(result) {
+	if (result.logoUrl == undefined) {
+		blogoUrl = "/static/undefined";
+	} else {
+		blogoUrl = result.logoUrl;
+	}
+	
+	if (result.foundedYear == undefined) {
+		foundedYearHtml = "";
+	} else {
+		foundedYearHtml = " | <span>Year : " + result.foundedYear + "</span>"
+	}
+	
+	hqLocation = result.locations.values[0].address.city + ", " + result.locations.values[0].address.state;
+	
+	blogoHtml = "<img src=" + blogoUrl + " alt='logo' />";
+	
+	topinfoHtml = "<div id='company-snippet'>";
+	hqHtml = " | <span>HQ: " + hqLocation +"</span>";
+	urlHtml = "Web: <a href='" + result.websiteUrl + "'>" + result.websiteUrl + "</a>"
+	topinfoEnd = "</div>"
+	clearHtml = "<div class='clear' />"
+	companyHtml = blogoHtml + clearHtml + topinfoHtml + urlHtml + hqHtml + foundedYearHtml + topinfoEnd; 
+	$("#company-overview").append(companyHtml);
+});
+
+$(".ui-rating-small").each(function(index) {
+    value = parseInt($(this).text());
+
+	$(this).empty();
+	for (i=1; i<6; i++) {
+		switch(i)
+		{
+		case 1:
+		  text = "Bad!"
+		  break;
+		case 2:
+		  text = "Poor"
+		  break;
+		case 3:
+		  text = "Average"
+		  break;
+		case 4:
+		  text = "Good"
+		  break;
+		case 5:
+		  text = "Great!"
+		  break;
+		default:
+		  text = "Bad!"
+		}
+		if (value < 0 ) {
+			$("<a/>").addClass("ui-rating-empty-small").attr("title", text).appendTo(this);
+			} else {
+			$("<a/>").addClass("ui-rating-full-small").attr("title", text).appendTo(this);
+			value = value - 1;
+			}
+		}
+	// $("<p/>").addClass("ui-selected-value").html(selected).appendTo(this);
+});
+
+$(".ui-rating-big").each(function(index) {
+    value = parseInt($(this).text());
+
+	$(this).empty();
+	for (i=1; i<6; i++) {
+		switch(i)
+		{
+		case 1:
+		  text = "Bad!"
+		  break;
+		case 2:
+		  text = "Poor"
+		  break;
+		case 3:
+		  text = "Average"
+		  break;
+		case 4:
+		  text = "Good"
+		  break;
+		case 5:
+		  text = "Great!"
+		  break;
+		default:
+		  text = "Bad!"
+		}
+		if (value < 0 ) {
+			$("<a/>").addClass("ui-rating-empty-big").attr("title", text).appendTo(this);
+			} else {
+			$("<a/>").addClass("ui-rating-full-big").attr("title", text).appendTo(this);
+			value = value - 1;
+			selected = text
+			}
+		}
+	htmldata = '&nbsp&nbsp"' + selected + '"' + '&nbsp&nbsp<small>{{ reviews | length }} reviews</small>';
+	$("<label/>").html(htmldata).appendTo(this);
+});
+
+$(".recommend-radio").each(function(index) {
+	value = $(this).text();
+	$(this).empty();
+	if (value == 'True') {
+		$("<i/>").addClass("icon-thumbs-up").appendTo(this);
+	} else {
+		$("<i/>").addClass("icon-thumbs-down").appendTo(this);
+	}
+});
+
+</script>
+
+<div id="company-overview">
+<h2>{{ company.name }}</h2>
+</div>
+
+{% if has_reviewed %}
+<div class="alert alert-success">
+<button class="close" data-dismiss="alert">×</button>
+<span class="label label-success">Success</span>&nbsp;&nbsp;Thank you for submitting the review!
+</div>
+{% endif %}
+
+<div class="clear" />
+
+<div class="ui-rating-big">3</div>
+
+<div id="separator">
+<strong>Reviews : </strong>	
+</div>
+
+
+<ol class="reviews">
+{% for review in reviews %}
+<li class="review">
+
+<div class="review-main">
+<strong>"{{ review.title }}"</strong>
+<div class="clear" />
+
+<label>Recommended to work here? :</label>
+<div class="recommend-radio">{{ review.recommend_radio | string }}</div>
+<p>Pros : {{ review.pros|default('None given') }}</p>
+<p>Cons : {{ review.cons|default('None given') }}</p>
+</div>
+
+<div class="company-stars">
+<label>Career Opportunities :</label><div class="ui-rating-small">{{ review.rate_career }}</div>
+<label>Compensation &amp; Benefits :</label><div class="ui-rating-small">{{ review.rate_comp }}</div>
+<label>Work/Life Balance :</label><div class="ui-rating-small">{{ review.rate_worklife }}</div>
+<label>Senior Management :</label><div class="ui-rating-small">{{ review.rate_manage }}</div>
+<label>Culture &amp; Values :</label><div class="ui-rating-small">{{ review.rate_culture }}</div>
+</div>
+
+<div class="clear" />
+
+</li>
+{% endfor %}
+</ol>

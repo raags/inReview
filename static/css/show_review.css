@@ -1,0 +1,126 @@
+#company-overview {
+margin-bottom: 10px;
+}
+
+#company-overview h2 {
+float: left;
+}
+
+#company-overview img {
+float: right;
+}
+
+#company-snippet {
+border-bottom: 1px dotted grey;
+border-top: 1px solid grey;
+color: grey;
+}
+
+#overall-rating {
+float:left;
+}
+
+#separator {
+background:#CCCCCC;
+border-top: 1px darkgray;
+}
+
+
+.ui-rating-big small {
+font-size: 10px	!important;
+}
+
+.reviewed {
+background: none repeat scroll 0 0 #D8F1C8 !important;
+border: 1px solid lightGreen;
+display: block;
+}
+
+.reviews {
+list-style: none outside none;
+margin: 10px 0 0;
+}
+
+.review {
+border-bottom: 1px solid #D4D4D4;
+margin-top: 10px;
+}
+
+.review p {
+font-size:11px;
+}
+
+.review label {
+clear: both;
+float: left;
+font-size: 10px;
+margin-bottom: 0;
+width: 150px;
+}
+
+.company-stars {
+float: right;
+width: 50%;
+}
+
+.recommend-radio {
+padding-bottom:30px;
+}
+
+.review-main {
+	float: left;
+}
+
+/* For the big and small stars */
+
+.ui-rating-big {
+}
+
+.ui-rating-big .ui-rating-full-big {
+width: 16px;
+height: 16px;
+font-size: 2px;
+float: left;
+text-decoration: none;
+vertical-align: bottom;
+background-image: url(/static/img/star-big-on.png) !important;
+background-repeat: no-repeat;
+}
+
+.ui-rating-big .ui-rating-empty-big {
+width: 16px;
+height: 16px;
+font-size: 2px;
+float: left;
+text-decoration: none;
+vertical-align: bottom;
+background-image: url(/static/img/star-big-off.png) !important;
+background-repeat: no-repeat;
+}
+
+
+.ui-rating-small .ui-rating-full-small {
+width: 12px;
+height: 12px;
+font-size: 2px;
+top: 4px;
+position: relative;
+float: left;
+text-decoration: none;
+vertical-align: bottom;
+background-image: url(/static/img/star-small-on.png) !important;
+background-repeat: no-repeat;
+}
+
+.ui-rating-small .ui-rating-empty-small {
+width: 12px;
+height: 12px;
+font-size: 2px;
+top: 4px;
+position: relative;
+float: left;
+text-decoration: none;
+vertical-align: bottom;
+background-image: url(/static/img/star-small-off.png) !important;
+background-repeat: no-repeat;
+}

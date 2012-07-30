@@ -1,0 +1,86 @@
+<html>
+<title>inReview - Testing</title>
+<head>
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>	
+</head>
+<body>
+		<script type="text/javascript">
+	
+		$('#review-form').submit(function() { // catch the form's submit event
+		    $.ajax({ // create an AJAX call...
+		        data: $(this).serialize(), // get the form data
+		        type: $(this).attr('method'), // GET or POST
+		        url: $(this).attr('action'), // the file to call
+		        success: function(response) { // on success..
+		            $('#right').html(response); // update the DIV
+		        }
+		    });
+		    return false; // cancel original event to prevent form submitting
+		});
+		</script>
+
+<form id="review-form" class="form" action="submit" method="post">
+	<fieldset>
+		<label>Title:<input type="text" name="title" placeholder="Short title for the review, e.g. Good place to start your Career">
+		<label>User id:</label><input type="text" name="user-id" placeholder="xfyafd-afds">
+		<label>Company name:</label><input type="text" name="company-name" placeholder="Ford">
+		<label>Company id:</label><input type="text" name="company-id" placeholder="14512">
+		<label>>Career Opportunities :</label>
+				<select class="rating" name="rate-career">
+				    <option value="0">bad</option>
+				    <option value="1">poor</option>
+				    <option value="2">average</option>
+				    <option value="3">good</option>
+					<option value="4">great!</option>
+				</select>
+			<label>Compensation &amp; Benefits :</label>
+				<select class="rating" name="rate-comp">
+					<option value="0">bad</option>
+					<option value="1">poor</option>
+					<option value="2">average</option>
+					<option value="3">good</option>
+					<option value="4">great!</option>
+				</select>
+			<label>Work/Life Balance :</label>
+				<select class="rating" name="rate-worklife">
+					<option value="0">bad</option>
+					<option value="1">poor</option>
+					<option value="2">average</option>
+					<option value="3">good</option>
+					<option value="4">great!</option>
+				</select>
+			<label>Senior Management :</label>
+				<select class="rating" name="rate-manage">
+					<option value="0">bad</option>
+					<option value="1">poor</option>
+					<option value="2">average</option>
+					<option value="3">good</option>
+					<option value="4">great!</option>
+				</select>
+			<label>Culture &amp; Values :</label>
+				<select class="rating" name="rate-culture">
+					<option value="0">bad</option>
+					<option value="1">poor</option>
+					<option value="2">average</option>
+					<option value="3">good</option>
+					<option value="4">great!</option>
+				</select>
+				
+			<label>Would you recommend your friend to work here?</label>
+					<label class="radio inline">
+						<input type="radio" id="recommend-option-yes" value="yes" checked="" name="recommend-radio">Yes
+					</label> 
+					<label class="radio inline">
+						<input type="radio" id="recommend-option-no" value="no" name="recommend-radio">No
+					</label>
+				
+			<label>Pros :</label>
+					<textarea id="pros" name="pros" class="input-xlarge" rows="3" placeholder="Great benefits, flexible timings"></textarea>
+
+			<label>Cons :</label>
+					<textarea id="cons" name="cons" class="input-xlarge" rows="3" placeholder="Slow growth, poor management"></textarea>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</fieldset>
+</form>
+</body>
+</html>

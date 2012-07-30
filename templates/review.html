@@ -1,0 +1,121 @@
+<script type="text/javascript">
+		
+$(".rating").rating({showCancel: false, showTarget: true, });
+		
+$("#review-title").append("<h2>"+selected+"</h2>");
+		
+$("<input/>").prop({
+	name: "user-id",
+	value: user_id, // User id
+}).appendTo("#review-form").hide();
+		 
+$("<input/>").prop({
+	name: "company-name",
+	value: selected, // selected company
+}).appendTo("#review-form").hide();
+
+$("<input/>").prop({
+	 name: "company-id",
+	 value: id, // selected company
+}).appendTo("#review-form").hide();
+	
+$('#review-form').submit(function() { // catch the form's submit event
+	$.ajax({ // create an AJAX call...
+		data: $(this).serialize(), // get the form data
+		type: $(this).attr('method'), // GET or POST
+		url: $(this).attr('action'), // the file to call
+		success: function(response) { // on success..
+		        $('#right').html(response); // update the DIV
+		      }
+		});
+		loadCompanyList(); //reload the right hand side company list
+		return false; // cancel original event to prevent form submitting
+});
+
+</script>
+
+<div id="review-title"></div>
+
+<div class="alert alert-info">
+    <a class="close" data-dismiss="alert" href="#">×</a>
+    <strong>Thank you</strong>
+	for deciding to write this anonymous review.
+</div>
+
+<form id="review-form" class="form" action="submit" method="post">
+	<fieldset>
+		<div class="control-group" id="review-title-group">
+			<label class="control-label" for="Title">Title (required) :</label>
+				<input type="text" name="title" id="review-title" class="span5" placeholder="Short title for the review, e.g. Good place to start your Career">
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="rate-career">Career Opportunities :</label>
+				<select class="rating" name="rate-career">
+				    <option value="0">bad</option>
+				    <option value="1">poor</option>
+				    <option value="2">average</option>
+				    <option value="3">good</option>
+					<option value="4">great!</option>
+				</select>
+			<label class="control-label" for="rate-comp">Compensation &amp; Benefits :</label>
+				<select class="rating" name="rate-comp">
+					<option value="0">bad</option>
+					<option value="1">poor</option>
+					<option value="2">average</option>
+					<option value="3">good</option>
+					<option value="4">great!</option>
+				</select>
+			<label class="control-label" for="rate-worklife">Work &amp; Life Balance :</label>
+				<select class="rating" name="rate-worklife">
+					<option value="0">bad</option>
+					<option value="1">poor</option>
+					<option value="2">average</option>
+					<option value="3">good</option>
+					<option value="4">great!</option>
+				</select>
+			<label class="control-label" for="rate-manage">Senior Management :</label>
+				<select class="rating" name="rate-manage">
+					<option value="0">bad</option>
+					<option value="1">poor</option>
+					<option value="2">average</option>
+					<option value="3">good</option>
+					<option value="4">great!</option>
+				</select>
+			<label class="control-label" for="rate-culture">Culture &amp; Values :</label>
+				<select class="rating" name="rate-culture">
+					<option value="0">bad</option>
+					<option value="1">poor</option>
+					<option value="2">average</option>
+					<option value="3">good</option>
+					<option value="4">great!</option>
+				</select>
+		</div>
+				
+		<div class="control-group">
+			<label class="control-label" for="recommend-radio">Would you recommend your friend to work here?</label>
+				<div class="controls">
+					<label class="radio inline">
+						<input type="radio" id="recommend-option-yes" value="yes" checked="" name="recommend-radio">Yes
+					</label> 
+					<label class="radio inline">
+						<input type="radio" id="recommend-option-no" value="no" name="recommend-radio">No
+					</label>
+				</div>
+		</div>
+				
+		<div class="control-group">
+			<label class="control-label" for="pros">Pros :</label>
+				<div class="controls">
+					<textarea id="pros" name="pros" class="input-xlarge" rows="3" placeholder="Great benefits, flexible timings"></textarea>
+				</div>
+		</div>
+				
+		<div class="control-group">
+			<label class="control-label" for="cons">Cons :</label>
+				<div class="controls">
+					<textarea id="cons" name="cons" class="input-xlarge" rows="3" placeholder="Slow growth, poor management"></textarea>
+				</div>
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</fieldset>
+</form>
