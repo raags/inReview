@@ -2,8 +2,17 @@ Author:
 Raghu Udiyar <raghusiddarth@gmail.com>
 
 Description:
-This a LinkedIn Hackday project submitted for the July Hackday
+This a LinkedIn Hackday project submitted for the July Hackday.
 
-inReview gets company reviews and ratings to LinkedIn
+inReview brings company reviews and ratings to LinkedIn. Use it 
+to search for company reviews, and to rate and review companies you 
+have worked for in the past.
 
-Built using : Bootstrap, Jquery, Flask and SQLAlchemy
+You can only review companies listed in your LinkedIn profile, as 
+you can obviously only review the companies you've worked for. Once 
+a position is reviewed, we keep track of this fact, so that the same 
+person can't post another review. The review itself is totally anonymous 
+and cannot be traced back to the user.
+
+Built using : 
+Bootstrap, Jquery, Flask and SQLAlchemy
