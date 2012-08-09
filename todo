@@ -1,3 +1,0 @@
-* Fix Logout
-* Split right content and load it via ajax, so that clicking on the logo loads the main right.html page.
-
